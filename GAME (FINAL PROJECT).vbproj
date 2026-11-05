@@ -110,10 +110,6 @@
     <Compile Include="HARDAGAIN.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MEDAGAIN.Designer.vb">
-      <DependentUpon>MEDAGAIN.vb</DependentUpon>
-    </Compile>
-    <Compile Include="MEDAGAIN.vb" />
     <Compile Include="MEDAGAINN.Designer.vb">
       <DependentUpon>MEDAGAINN.vb</DependentUpon>
     </Compile>
@@ -127,6 +123,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Sounds.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
@@ -140,12 +137,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="PLAY AGAIN.Designer.vb">
-      <DependentUpon>PLAY AGAIN.vb</DependentUpon>
-    </Compile>
-    <Compile Include="PLAY AGAIN.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="PLAYAGAIN.Designer.vb">
       <DependentUpon>PLAYAGAIN.vb</DependentUpon>
@@ -179,9 +170,6 @@
     <EmbeddedResource Include="HARDAGAIN.resx">
       <DependentUpon>HARDAGAIN.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MEDAGAIN.resx">
-      <DependentUpon>MEDAGAIN.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MEDAGAINN.resx">
       <DependentUpon>MEDAGAINN.vb</DependentUpon>
     </EmbeddedResource>
@@ -193,9 +181,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PLAY AGAIN.resx">
-      <DependentUpon>PLAY AGAIN.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PLAYAGAIN.resx">
       <DependentUpon>PLAYAGAIN.vb</DependentUpon>
@@ -281,6 +266,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\want4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\CLICK.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GAMEOVER.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\GAMESTART.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WRONG.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

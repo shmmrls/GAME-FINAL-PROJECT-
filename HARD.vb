@@ -1,7 +1,6 @@
 ﻿Public Class HARD
     Dim score As Integer = 0
     Dim timeLeft As Integer = 50
-    Dim targetSpeed As Integer = 400
     Dim rnd As New Random()
     Dim comboCount As Integer = 0
     Dim penalty As Integer = 1
@@ -12,7 +11,7 @@
 
 
     Private Sub pb1Start_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        My.Computer.Audio.Play("C:\\Users\\ALLEIA\\OneDrive\\Documents\\VISUAL BASIC\\GAME (FINAL PROJECT)\\Resources\\GAMESTART.wav", AudioPlayMode.Background)
+        PlaySound("GAMESTART.wav")
         score = 0
         timeLeft = 50
         Label1.Text = "Score: " & score
@@ -40,10 +39,9 @@
                 MessageBox.Show("Time's up! Final Score: " & score, "Game Over")
             End If
 
-            Dim againForm As New HARDAGAIN()
             HARDAGAIN.Show()
             Me.Hide()
-            My.Computer.Audio.Play("C:\\Users\\ALLEIA\\OneDrive\\Documents\\VISUAL BASIC\\GAME (FINAL PROJECT)\\Resources\\GAMEOVER.wav", AudioPlayMode.Background)
+            PlaySound("GAMEOVER.wav")
         End If
 
         If comboCount > 0 Then
@@ -53,7 +51,7 @@
 
 
     Private Async Sub pbTarget_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
-        My.Computer.Audio.Play("C:\\Users\\ALLEIA\\OneDrive\\Documents\\VISUAL BASIC\\GAME (FINAL PROJECT)\\Resources\\CLICK.wav", AudioPlayMode.Background)
+        PlaySound("CLICK.wav")
         comboCount += 1
         If comboCount >= 3 Then
             score += 3 ' 
@@ -72,7 +70,7 @@
 
     Private Sub HARD_Click(sender As Object, e As MouseEventArgs) Handles Me.Click
         If Not PictureBox4.Bounds.Contains(e.Location) Then
-            My.Computer.Audio.Play("C:\\Users\\ALLEIA\\OneDrive\\Documents\\VISUAL BASIC\\GAME (FINAL PROJECT)\\Resources\\WRONG.wav", AudioPlayMode.Background)
+            PlaySound("WRONG.wav")
             comboCount = 0
             score -= penalty
             If score < 0 Then score = 0

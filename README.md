@@ -82,11 +82,8 @@ cd click-the-target-game
 1. Open `GAME (FINAL PROJECT).sln` in Visual Studio.
 2. Press **F5** to build and run.
 
-> **Note on sound:** the source currently references sound files using absolute paths from the
-> original development machine (see [Known Limitations](#known-limitations-and-roadmap)).
-> On another computer, audio calls will fail until these paths point to the `Resources`
-> folder on your machine. In Visual Studio, use **Find and Replace in Files**
-> (`Ctrl+Shift+H`) to update the path prefix.
+The sound effects in the `Resources` folder are copied next to the executable automatically
+when you build, so no extra setup is needed.
 
 ## Technical Highlights
 
@@ -98,6 +95,9 @@ cd click-the-target-game
   `Random`, so it always stays on screen.
 - **Asynchronous feedback:** `Async`/`Await` with `Task.Delay` creates the target's brief
   shrink effect without freezing the UI.
+- **Centralized audio helper:** all sound playback goes through one `PlaySound` method
+  (`Sounds.vb`) that resolves files relative to the application folder and fails silently
+  if a file is missing, so audio problems can never crash the game.
 - **Persistent state:** the high score is stored with `My.Settings` and saved when beaten.
 - **Multi-form navigation:** screens are separate forms that show and hide one another to
   create a complete game flow.
@@ -111,6 +111,7 @@ click-the-target-game/
 ├── EASY.vb / MEDIUM.vb / HARD.vb       # Game screens, one per difficulty
 ├── PLAYAGAIN.vb, MEDAGAINN.vb, HARDAGAIN.vb   # Play-again screens after a round
 ├── ABOUT.vb                   # About screen
+├── Sounds.vb                  # Shared audio helper (PlaySound)
 ├── Resources/                 # Images and sound effects
 ├── My Project/                # Application settings (including HighScore)
 ├── GAME (FINAL PROJECT).sln   # Visual Studio solution
@@ -119,14 +120,11 @@ click-the-target-game/
 
 ## Known Limitations and Roadmap
 
-This project was built as a final course project, and there are clear improvements to make:
+This project was built as a final course project. Planned improvements:
 
-- [ ] **Replace hard-coded absolute sound paths** with paths relative to the application
-      (or embedded resources) so the game runs on any machine without edits
 - [ ] **Reduce duplication:** the three game screens share nearly identical code. A single game
       form that accepts difficulty settings (time limit, speed) would replace three copies
-- [ ] **Remove unused forms and variables** (for example, leftover duplicate play-again screens
-      and unused fields such as `targetSpeed`)
+- [ ] Connect the unused **Thank You** screen to the game flow (or remove it)
 - [ ] **Track a separate high score per difficulty** (currently one score is shared)
 - [ ] **Show the high score on all game screens**
 - [ ] Review the combo and timer logic and tune the difficulty balance
